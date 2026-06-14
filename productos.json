@@ -1,0 +1,89 @@
+[
+  { "nombre": "MARQUESA DE CHOCOLATE", "precio": 5500, "imagen": "img/foto11.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "MARQUESA DE DULCE DE LECHE", "precio": 4000, "imagen": "img/foto22.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "MARQUESA DE COOKIES AND CREAM", "precio": 4000, "imagen": "img/foto33.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "CHOCOTORTA", "precio": 4500, "imagen": "img/foto44.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "MARQUESA DE PIE DE LIMON", "precio": 4000, "imagen": "img/foto55.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "TIRAMISÚ", "precio": 4000, "imagen": "img/foto66.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "CHEESECAKE DE OREO", "precio": 6000, "imagen": "img/foto77.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "CHEESECAKE DE FRUTOS ROJOS", "precio": 6000, "imagen": "img/foto88.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "CHOCO KINDER", "precio": 7000, "imagen": "img/foto99.JPG", "visible": true, "categoria": "pasteleria" },
+  { "nombre": "CHOCO PEPITO", "precio": 6000, "imagen": "img/foto1010.JPG", "visible": true, "categoria": "pasteleria" },
+  {
+    "nombre": "DONITAS GLASEADAS DE LIMON",
+    "imagen": "img/foto1111.jpeg",
+    "precio_rango": "$2100  $3200",
+    "visible": true,
+    "categoria": "pasteleria",
+    "opciones": [
+      { "texto": "Agregar x6", "cantidad": 6, "precio": 2100 },
+      { "texto": "Agregar x12", "cantidad": 12, "precio": 3200 }
+    ]
+  },
+  {
+    "nombre": "DONITAS TOPPING DE CHOCOLATE",
+    "imagen": "img/foto1212.jpeg",
+    "precio_rango": "$2200  $3500",
+    "visible": true,
+    "categoria": "pasteleria",
+    "opciones": [
+      { "texto": "Agregar x6", "cantidad": 6, "precio": 2200 },
+      { "texto": "Agregar x12", "cantidad": 12, "precio": 3500 }
+    ]
+  },
+  {
+    "nombre": "DONITAS TOPPING DE DULCE DE LECHE",
+    "imagen": "img/foto1313.jpeg",
+    "precio_rango": "$2400  $3700",
+    "visible": true,
+    "categoria": "pasteleria",
+    "opciones": [
+      { "texto": "Agregar x6", "cantidad": 6, "precio": 2400 },
+      { "texto": "Agregar x12", "cantidad": 12, "precio": 3700 }
+    ]
+  },
+  {
+    "nombre": "MICHE ANDINO DURAZNO",
+    "imagen": "img/rubia.JPG",
+    "precio_rango": "$9000 $17000",
+    "visible": true,
+    "categoria": "bebidas",
+    "opciones": [
+      { "texto": "Agregar x1", "precio": 9000 },
+      { "texto": "Agregar x2", "precio": 17000 }
+    ]
+  },
+  {
+    "nombre": "MICHE ANDINO FRUTILLA",
+    "imagen": "img/rubia.JPG",
+    "precio_rango": "$10000 $18000",
+    "visible": true,
+    "categoria": "bebidas",
+    "opciones": [
+      { "texto": "Agregar x1", "precio": 10000 },
+      { "texto": "Agregar x2", "precio": 18000 }
+    ]
+  },
+  {
+    "nombre": "PONCHE CREMA",
+    "imagen": "img/rubia.JPG",
+    "precio_rango": "$10000 $18000",
+    "visible": true,
+    "categoria": "bebidas",
+    "opciones": [
+      { "texto": "Agregar x1", "precio": 10000 },
+      { "texto": "Agregar x2", "precio": 18000 }
+    ]
+  },
+  {
+    "nombre": "BAILEYS",
+    "imagen": "img/gintonic.JPG",
+    "precio_rango": "$14000 $26000",
+    "visible": true,
+    "categoria": "bebidas",
+    "opciones": [
+      { "texto": "Agregar x1", "precio": 14000 },
+      { "texto": "Agregar x2", "precio": 26000 }
+    ]
+  }
+]
