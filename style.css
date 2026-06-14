@@ -1,0 +1,746 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  margin: 0;
+  padding: 0;
+  /* IMPORTANTE: Usamos 'fixed' para que la imagen se quede quieta y se vea detrás del notch/barra */
+  background: 
+    linear-gradient(rgba(255, 248, 245, 0.3), rgba(255, 248, 245, 0.3)),
+    url("img/Fondopostres2.JPG");
+
+  background-size: cover;
+  background-position: center top; 
+  background-attachment: fixed; /* Fixed hace que no se desplace al hacer scroll */
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  color: #333;
+  
+  /* Esto empuja el contenido para que la cámara no tape tus botones, 
+     pero permite que la imagen de fondo siga subiendo hasta el borde */
+  padding-top: env(safe-area-inset-top);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border: none;
+  box-shadow: none;
+}
+
+.titulo-tienda h1 {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff6b81, #ff9f43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.titulo-tienda p {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #777;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  max-width: 1500px;
+  margin: -5px auto 0 auto;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 255, 255, .35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+  border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.hero h1 {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff6b81, #ff9f43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* =========================
+   PRODUCTOS
+========================= */
+
+.productos {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+  display: block;
+}
+
+.info {
+  padding: 8px;
+  text-align: center;
+}
+
+.info h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.precio {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff6b81;
+  margin-bottom: 15px;
+}
+
+.agregar {
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.agregar:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   CARRITO FLOTANTE
+========================= */
+
+.carrito-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 75px;
+  height: 75px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 107, 129, 0.6), rgba(255, 159, 67, 0.6));
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
+  transition: .3s;
+}
+
+.carrito-float:hover {
+  transform: scale(1.05);
+}
+
+.carrito-float span {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   CARRITO LATERAL
+========================= */
+
+.carrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 9999;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55)),
+    url("img/fondopostres3.JPG");
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(8px);
+}
+
+.carrito.abierto {
+  transform: translateX(0);
+}
+
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.carrito-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item button {
+  background: red;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.carrito-footer {
+  margin-top: 20px;
+}
+
+#enviarWhatsapp {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff6b81, #ff9f43);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* =========================
+   VACIAR CARRITO
+========================= */
+
+#vaciarCarritoBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #777777;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin: 15px auto;
+}
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contacto {
+  max-width: 1500px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(255, 255, 255, .35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+  text-align: center;
+}
+
+.botones-contacto {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-contacto {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.btn-contacto:hover {
+  transform: translateY(-3px);
+}
+
+.creador {
+  font-size: 11px;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* =========================
+   MODAL IMAGEN
+========================= */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .20);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal.activo {
+  display: flex;
+}
+
+#imagenGrande {
+  max-width: 85%;
+  max-height: 75%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+#cerrarModal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-variantes {
+  position: absolute;
+  bottom: 90px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-variante {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+}
+
+.btn-variante.activo {
+  background: white;
+  color: black;
+  border-color: white;
+  font-weight: bold;
+}
+
+.logo-modal {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  z-index: 10001;
+}
+
+.agregar-modal {
+  position: absolute;
+  bottom: 40px;
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+}
+
+.titulo-modal {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-contacto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.icono-red {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================
+   DESCUENTOS
+========================= */
+
+.descuento {
+  text-align: center;
+  padding: 18px 15px;
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.descuento-texto {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.3;
+}
+
+.off {
+  display: block;
+  font-size: 32px;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ff6b81, #ff9f43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.no-donitas {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #666;
+  margin-top: 0px;
+  letter-spacing: 0.5px;
+}
+
+/* =======================================================
+   MODAL +18
+======================================================= */
+
+.modal-edad {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.98);
+  z-index: 99999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.modal-edad-contenido {
+  background: #111111;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  max-width: 400px;
+  width: 90%;
+  border: 2px solid #333;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.modal-edad-contenido h2 {
+  margin-top: 0;
+  font-size: 26px;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.modal-edad-contenido p {
+  color: #dddddd;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-family: sans-serif;
+}
+
+.modal-edad-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-edad-botones button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+  font-family: sans-serif;
+}
+
+.modal-edad-botones button:active {
+  transform: scale(0.97);
+}
+
+.btn-confirmar {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+}
+
+.btn-cancelar {
+  background: #333333;
+  color: #cccccc;
+  border: 1px solid #444;
+}
+
+.modal-edad-legal {
+  font-size: 12px !important;
+  color: #888888 !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.modal-edad-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #333;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 30px;
+  border: 2px solid #555;
+  box-sizing: border-box;
+}
+
+.modal-edad-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* =======================================================
+   BOTONES DE SECCIONES (INICIO DE LA TIENDA)
+======================================================= */
+
+.secciones-tienda {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.btn-seccion {
+  flex: 1;
+  padding: 14px 8px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: sans-serif;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.btn-seccion:active {
+  transform: scale(0.97);
+}
+
+.btn-dulce {
+  background: #ffffff;
+  color: #ff5e62;
+  border: 2px solid #ff5e62;
+}
+
+.btn-bebidas {
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 94, 98, 0.2);
+}
+
+/* =======================================================
+   ESTILO DE LOS CAMPOS DE ENVÍO (LIMPIO)
+======================================================= */
+.datos-envio {
+  padding: 15px;
+  margin: 15px 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.datos-envio input {
+  display: block; 
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+
+
+/* =========================
+   RESPONSIVE (ÚLTIMO REGLÓN CORREGIDO)
+========================= */
+
+@media (max-width: 768px) {
+  .titulo-tienda h1 {
+    font-size: 30px;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  /* REPARADO: Mantiene el ancho total del carrito en celus pero sin romper inputs */
+  .carrito {
+    width: 100% !important;
+  }
+}
