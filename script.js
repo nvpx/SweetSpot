@@ -168,9 +168,7 @@ function actualizarCarrito() {
       '</div>';
 
     if (p.nombre.toUpperCase().includes("DONITAS") || 
-p.nombre.toUpperCase().includes("PONCHE") || 
-p.nombre.toUpperCase().includes("MICHE") || 
-p.nombre.toUpperCase().includes("BAILEYS") || 
+ 
     p.nombre.includes("(x")) {
       
       sumaDonitas += p.precio;
