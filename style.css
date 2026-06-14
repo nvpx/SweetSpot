@@ -757,6 +757,6 @@ header {
   }
   
   .card img {
-    height: 250px; /* Ajuste para que no quede tan alta la imagen en PC */
+    height: 200px; /* Ajuste para que no quede tan alta la imagen en PC */
   }
 }
