@@ -122,17 +122,27 @@ function volverAlMenuPrincipal() {
 /* =========================
    CARRITO
 ========================= */
-function agregarProducto(nombreFinal, precioSeleccionado) {
-  let productoParaCarrito = {
-    nombre: nombreFinal,
-    precio: precioSeleccionado
-  };
 
-  carrito.push(productoParaCarrito);
+function agregarProducto(nombreFinal, precioSeleccionado) {
+  // Buscamos si el producto ya existe en el carrito
+  let productoExistente = carrito.find(item => item.nombre === nombreFinal);
+
+  if (productoExistente) {
+    // Si ya existe, aumentamos la cantidad
+    productoExistente.cantidad += 1;
+  } else {
+    // Si es nuevo, lo creamos con cantidad 1
+    carrito.push({
+      nombre: nombreFinal,
+      precio: precioSeleccionado,
+      cantidad: 1
+    });
+  }
   actualizarCarrito();
 }
 
 function eliminarProducto(index) {
+  // Eliminamos el ítem completo de la lista
   carrito.splice(index, 1);
   actualizarCarrito();
 }
@@ -142,6 +152,32 @@ function vaciarCarrito() {
   if (confirmar) {
     carrito.length = 0; 
     actualizarCarrito();
+  }
+}
+
+function actualizarCarrito() {
+  const listaCarrito = document.getElementById("lista-carrito"); 
+  listaCarrito.innerHTML = ""; 
+  let totalCarrito = 0;
+
+  carrito.forEach((item, index) => {
+    let subtotal = item.precio * item.cantidad;
+    totalCarrito += subtotal;
+
+    // Dibujamos la fila: "Cantidad x Nombre"
+    listaCarrito.innerHTML += `
+      <div class="item">
+        <span>${item.cantidad} x ${item.nombre}</span>
+        <span>$${subtotal.toLocaleString()}</span>
+        <button onclick="eliminarProducto(${index})">X</button>
+      </div>
+    `;
+  });
+
+  // Asegúrate de tener un elemento con id="total" en tu HTML para mostrar el precio final
+  const totalDisplay = document.getElementById("total");
+  if (totalDisplay) {
+      totalDisplay.innerText = `$${totalCarrito.toLocaleString()}`;
   }
 }
 
