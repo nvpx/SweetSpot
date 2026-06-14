@@ -43,6 +43,6 @@
     ]
   },
   { "nombre": "PONCHE CREMA", "precio": 10000, "imagen": "img/rubia.JPG", "visible": true, "categoria": "bebidas" },
-  { "nombre": "MICHE ANDINO", "precio": 10000, "imagen": "img/rubia.JPG", "visible": true, "categoria": "bebidas" },
-  { "nombre": "BAILEYS", "precio": 10000, "imagen": "img/gintonic.JPG", "visible": true, "categoria": "bebidas" }
+  { "nombre": "MICHE ANDINO", "precio": 9000, "imagen": "img/rubia.JPG", "visible": true, "categoria": "bebidas" },
+  { "nombre": "BAILEYS", "precio": 14000, "imagen": "img/gintonic.JPG", "visible": true, "categoria": "bebidas" }
 ]
