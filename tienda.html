@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <title>Sweet Spot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-container">
+      <img src="img/logopostres.PNG" alt="Logo" class="logo">
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>SWEET SPOT</h1>
+    <h3 class="subtitulo">POSTRES FRIOS</h3>
+    <p class="descripcion">Marquesas, Chocotorta, Tiramisú y más!</p>
+  </section>
+
+  <div class="secciones-tienda">
+    <button class="btn-seccion btn-dulce" onclick="cambiarSeccion('pasteleria')">
+      🧁 Menú Dulce
+    </button>
+    <button class="btn-seccion btn-bebidas" onclick="intentarVerBebidas()">
+      🥃 Bebidas Artesanales (+18)
+    </button>
+  </div>
+
+  <main>
+    <section id="productos" class="productos"></section>
+  </main>
+
+  <section class="descuento">
+    <p class="descuento-texto">
+      COMPRANDO 3 O MÁS UNIDADES
+      <span class="off">5% OFF</span>
+      <span class="no-donitas">*NO INCLUYE DONITAS/BEBIDAS (+18)*</span>
+    </p>
+  </section>
+
+  <section class="contacto">
+    <div class="botones-contacto">
+      <a href="https://instagram.com/sweet_spot.ar" target="_blank" class="btn-contacto">
+        <img src="img/insta.PNG" class="icono-red"> Instagram
+      </a>
+    </div>
+  </section>
+
+  <aside id="carrito" class="carrito">
+    <div class="carrito-header">
+      <h2>🛒 Tu Pedido</h2>
+      <button id="cerrarCarrito">✖</button>
+    </div>
+
+    <div id="itemsCarrito"></div>
+
+    <div id="bloqueEnvio" class="datos-envio" style="display: none;">
+      <p class="envio-titulo">📍 DATOS DE ENTREGA:</p>
+      <input type="text" id="envioCalle" placeholder="Calle">
+      <input type="number" id="envioNumero" placeholder="Número / Altura">
+      <input type="text" id="envioLocalidad" placeholder="Localidad">
+    </div>
+
+    <div class="carrito-footer">
+      <h3>Total: $<span id="total">0</span></h3>
+      <button id="vaciarCarritoBtn" onclick="vaciarCarrito()">🗑️ Vaciar Carrito</button>
+      <button id="enviarWhatsapp">Enviar Pedido por WhatsApp</button>
+    </div>
+
+    <p class="creador">©️3DU.DESIGN</p>
+  </aside>
+
+  <button id="abrirCarrito" class="carrito-float">
+    🛒 <span id="contador">0</span>
+  </button>
+
+  <div id="modalImagen" class="modal">
+    <span id="cerrarModal">&times;</span>
+    <img src="img/logopostres.PNG" alt="Logo" class="logo-modal">
+    <img id="imagenGrande" src="" alt="Imagen ampliada">
+    <div id="contenedorVariantes" class="modal-variantes"></div>
+    <button id="agregarModal" class="agregar-modal">🛒 Agregar al carrito</button>
+  </div>
+
+  <div id="cartel-verificacion" class="modal-edad">
+    <div class="modal-edad-contenido">
+      <div class="modal-edad-logo">
+  <img src="img/+18.PNG" alt="Logo">
+</div>
+      <h2>¿Sos mayor de 18?</h2>
+      <p>Esta sección contiene bebidas alcohólicas artesanales y su ingreso es exclusivo para personas mayores de edad.</p>
+      
+      <div class="modal-edad-botones">
+        <button class="btn-confirmar" onclick="confirmarMayorDeEdad()">Sí, continuar</button>
+        <button class="btn-cancelar" onclick="volverAlMenuPrincipal()">No, volver al menú principal</button>
+      </div>
+
+      <p class="modal-edad-legal">
+        Al presionar continuar, declarás bajo juramento ser mayor de edad. Prohibida la venta de alcohol a menores de 18 años (Ley 24.788). Beber con moderación.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
