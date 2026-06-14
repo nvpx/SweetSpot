@@ -192,7 +192,7 @@ function actualizarCarrito() {
     // Aquí agregamos el resumen visual del ahorro
     itemsCarritoElem.innerHTML +=
       '<div class="item" style="border-top: 1px solid #ddd; padding-top: 10px;">' +
-      '<div><strong style="color: green;">Descuento 5% OFF</strong></div>' +
+      '<div><strong style="color: green;">Descuento Postres 5% OFF</strong></div>' +
       '<div style="text-align: right;">' +
         '<span style="text-decoration: line-through; color: #888; font-size: 13px; margin-right: 5px;">$' + sumaTradicionales.toFixed(2) + '</span>' +
         '<strong>$' + subtotalTradicionalesConDesc.toFixed(2) + '</strong>' +
