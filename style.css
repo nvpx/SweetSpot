@@ -678,9 +678,9 @@ header {
 }
 
 .btn-dulce {
-  background: #ffffff;
-  color: #ff5e62;
-  border: 2px solid #ff5e62;
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 94, 98, 0.2);
 }
 
 .btn-bebidas {
