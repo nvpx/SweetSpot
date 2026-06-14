@@ -45,7 +45,7 @@
   {
     "nombre": "MICHE ANDINO DURAZNO",
     "imagen": "img/foto1414.jpeg",
-    "precio_rango": "$9000 $17000",
+    "precio_rango": "🍑$9000 $17000",
     "visible": true,
     "categoria": "bebidas",
     "opciones": [
@@ -56,7 +56,7 @@
   {
     "nombre": "MICHE ANDINO FRUTILLA",
     "imagen": "img/foto1414.jpeg",
-    "precio_rango": "$10000 $18000",
+    "precio_rango": "🍓$10000 $18000",
     "visible": true,
     "categoria": "bebidas",
     "opciones": [
