@@ -44,7 +44,7 @@
   },
   {
     "nombre": "MICHE ANDINO DURAZNO",
-    "imagen": "img/rubia.JPG",
+    "imagen": "img/foto1414.jpeg",
     "precio_rango": "$9000 $17000",
     "visible": true,
     "categoria": "bebidas",
@@ -55,7 +55,7 @@
   },
   {
     "nombre": "MICHE ANDINO FRUTILLA",
-    "imagen": "img/rubia.JPG",
+    "imagen": "img/foto1414.jpeg",
     "precio_rango": "$10000 $18000",
     "visible": true,
     "categoria": "bebidas",
@@ -66,7 +66,7 @@
   },
   {
     "nombre": "PONCHE CREMA",
-    "imagen": "img/rubia.JPG",
+    "imagen": "img/foto1515.jpeg",
     "precio_rango": "$10000 $18000",
     "visible": true,
     "categoria": "bebidas",
@@ -77,7 +77,7 @@
   },
   {
     "nombre": "BAILEYS",
-    "imagen": "img/gintonic.JPG",
+    "imagen": "img/foto1616.jpeg",
     "precio_rango": "$14000 $26000",
     "visible": true,
     "categoria": "bebidas",
