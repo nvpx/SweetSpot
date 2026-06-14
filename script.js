@@ -122,19 +122,13 @@ function volverAlMenuPrincipal() {
 /* =========================
    CARRITO
 ========================= */
-
 function agregarProducto(nombreFinal, precioSeleccionado) {
-  let productoExistente = carrito.find(item => item.nombre === nombreFinal);
+  let productoParaCarrito = {
+    nombre: nombreFinal,
+    precio: precioSeleccionado
+  };
 
-  if (productoExistente) {
-    productoExistente.cantidad += 1;
-  } else {
-    carrito.push({
-      nombre: nombreFinal,
-      precio: precioSeleccionado,
-      cantidad: 1
-    });
-  }
+  carrito.push(productoParaCarrito);
   actualizarCarrito();
 }
 
@@ -151,53 +145,6 @@ function vaciarCarrito() {
   }
 }
 
-function actualizarCarrito() {
-  const listaCarrito = document.getElementById("itemsCarrito"); 
-  if (!listaCarrito) return;
-  listaCarrito.innerHTML = ""; 
-  
-  let totalCarrito = 0;
-  let sumaTradicionales = 0;
-  let cantidadTradicionales = 0;
-
-  carrito.forEach((item, index) => {
-    let subtotal = item.precio * item.cantidad;
-    totalCarrito += subtotal;
-
-    // Sumar para el descuento (solo si no es donita/bebida)
-    if (!item.nombre.toUpperCase().includes("DONITAS") && 
-        !item.nombre.toUpperCase().includes("PONCHE") && 
-        !item.nombre.toUpperCase().includes("MICHE") && 
-        !item.nombre.toUpperCase().includes("BAILEYS")) {
-      sumaTradicionales += subtotal;
-      cantidadTradicionales += item.cantidad;
-    }
-
-    listaCarrito.innerHTML += `
-      <div class="item">
-        <span>${item.cantidad} x ${item.nombre}</span>
-        <span>$${subtotal.toLocaleString()}</span>
-        <button onclick="eliminarProducto(${index})">✖</button>
-      </div>
-    `;
-  });
-
-  // Aplicar descuento 5% si cantidadTradicionales >= 3
-  if (cantidadTradicionales >= 3) {
-    let descuento = sumaTradicionales * 0.05;
-    totalCarrito -= descuento;
-    listaCarrito.innerHTML += `<div class="item" style="color:green;">Descuento 5% OFF: -$${descuento.toLocaleString()}</div>`;
-  }
-
-  document.getElementById("total").innerText = totalCarrito.toLocaleString();
-  
-  // Mostrar/Ocultar bloque de envío y vaciar
-  const bloqueEnvio = document.getElementById("bloqueEnvio");
-  if (bloqueEnvio) bloqueEnvio.style.display = carrito.length === 0 ? "none" : "block";
-  
-  const btnVaciar = document.getElementById("vaciarCarritoBtn");
-  if (btnVaciar) btnVaciar.style.display = carrito.length === 0 ? "none" : "block";
-}
 /* ====================================================
    ACTUALIZAR INTERFAZ (Tu original + control de visibilidad)
 ==================================================== */
