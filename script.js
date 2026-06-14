@@ -124,14 +124,11 @@ function volverAlMenuPrincipal() {
 ========================= */
 
 function agregarProducto(nombreFinal, precioSeleccionado) {
-  // Buscamos si el producto ya existe en el carrito
   let productoExistente = carrito.find(item => item.nombre === nombreFinal);
 
   if (productoExistente) {
-    // Si ya existe, aumentamos la cantidad
     productoExistente.cantidad += 1;
   } else {
-    // Si es nuevo, lo creamos con cantidad 1
     carrito.push({
       nombre: nombreFinal,
       precio: precioSeleccionado,
@@ -142,7 +139,6 @@ function agregarProducto(nombreFinal, precioSeleccionado) {
 }
 
 function eliminarProducto(index) {
-  // Eliminamos el ítem completo de la lista
   carrito.splice(index, 1);
   actualizarCarrito();
 }
@@ -156,31 +152,52 @@ function vaciarCarrito() {
 }
 
 function actualizarCarrito() {
-  const listaCarrito = document.getElementById("lista-carrito"); 
+  const listaCarrito = document.getElementById("itemsCarrito"); 
+  if (!listaCarrito) return;
   listaCarrito.innerHTML = ""; 
+  
   let totalCarrito = 0;
+  let sumaTradicionales = 0;
+  let cantidadTradicionales = 0;
 
   carrito.forEach((item, index) => {
     let subtotal = item.precio * item.cantidad;
     totalCarrito += subtotal;
 
-    // Dibujamos la fila: "Cantidad x Nombre"
+    // Sumar para el descuento (solo si no es donita/bebida)
+    if (!item.nombre.toUpperCase().includes("DONITAS") && 
+        !item.nombre.toUpperCase().includes("PONCHE") && 
+        !item.nombre.toUpperCase().includes("MICHE") && 
+        !item.nombre.toUpperCase().includes("BAILEYS")) {
+      sumaTradicionales += subtotal;
+      cantidadTradicionales += item.cantidad;
+    }
+
     listaCarrito.innerHTML += `
       <div class="item">
         <span>${item.cantidad} x ${item.nombre}</span>
         <span>$${subtotal.toLocaleString()}</span>
-        <button onclick="eliminarProducto(${index})">X</button>
+        <button onclick="eliminarProducto(${index})">✖</button>
       </div>
     `;
   });
 
-  // Asegúrate de tener un elemento con id="total" en tu HTML para mostrar el precio final
-  const totalDisplay = document.getElementById("total");
-  if (totalDisplay) {
-      totalDisplay.innerText = `$${totalCarrito.toLocaleString()}`;
+  // Aplicar descuento 5% si cantidadTradicionales >= 3
+  if (cantidadTradicionales >= 3) {
+    let descuento = sumaTradicionales * 0.05;
+    totalCarrito -= descuento;
+    listaCarrito.innerHTML += `<div class="item" style="color:green;">Descuento 5% OFF: -$${descuento.toLocaleString()}</div>`;
   }
-}
 
+  document.getElementById("total").innerText = totalCarrito.toLocaleString();
+  
+  // Mostrar/Ocultar bloque de envío y vaciar
+  const bloqueEnvio = document.getElementById("bloqueEnvio");
+  if (bloqueEnvio) bloqueEnvio.style.display = carrito.length === 0 ? "none" : "block";
+  
+  const btnVaciar = document.getElementById("vaciarCarritoBtn");
+  if (btnVaciar) btnVaciar.style.display = carrito.length === 0 ? "none" : "block";
+}
 /* ====================================================
    ACTUALIZAR INTERFAZ (Tu original + control de visibilidad)
 ==================================================== */
