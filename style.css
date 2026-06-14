@@ -744,3 +744,19 @@ header {
     width: 100% !important;
   }
 }
+
+
+
+/* =========================
+   MEDIA QUERY PARA PC (4 COLUMNAS)
+========================= */
+@media (min-width: 1024px) {
+  .productos {
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas para PC */
+    gap: 20px;
+  }
+  
+  .card img {
+    height: 250px; /* Ajuste para que no quede tan alta la imagen en PC */
+  }
+}
